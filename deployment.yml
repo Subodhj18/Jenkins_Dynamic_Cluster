@@ -1,0 +1,19 @@
+//deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myweb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: slave
+  template:
+    metadata:
+      name: myweb-pod
+      labels:
+        env: slave
+    spec:
+      containers:
+      - name: myweb-con
+        image: subodhj18/slave
